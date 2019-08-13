@@ -1,4 +1,4 @@
-# video_compressor
+# Video Compressor
 
 Converts MP4 videos to H265 MP4 with 28 fixed frames
 
