@@ -8,6 +8,10 @@ from pathlib import Path
 OUTPUT_SUFFIX = "_compressed.mp4"
 
 
+def is_meta_file(in_filename):
+    return in_filename.startswith("_")
+
+
 def compress_file(in_filename):
     out_filename = "{}{}".format(in_filename[:-4], OUTPUT_SUFFIX)
     subprocess.run(
@@ -29,12 +33,15 @@ def compress_file(in_filename):
 @click.argument("initial_path")
 def cli(initial_path, delete, input_ext):
     p = Path(initial_path)
-    for in_filename in p.glob("**/*.{}".format(input_ext)):
-        if str(in_filename).endswith(OUTPUT_SUFFIX):
+    for file_ in p.glob("**/*.{}".format(input_ext)):
+        in_filename = str(file_)
+        if in_filename.endswith(OUTPUT_SUFFIX):
             continue
-        compress_file(str(in_filename))
+        elif is_meta_file(in_filename):
+            continue
+        compress_file(in_filename)
         if delete:
-            os.remove(str(in_filename))
+            os.remove(in_filename)
 
 
 if __name__ == "__main__":
