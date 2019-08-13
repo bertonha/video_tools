@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='Video Compress',
+    name='Video Compressor',
     version='0.1',
     py_modules=['compress_dir'],
     install_requires=[
