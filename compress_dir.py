@@ -9,7 +9,7 @@ OUTPUT_SUFFIX = "_compressed.mp4"
 
 
 def is_meta_file(in_filename):
-    return in_filename.startswith("_")
+    return in_filename.startswith("._")
 
 
 def compress_file(in_filename):
