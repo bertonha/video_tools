@@ -44,10 +44,12 @@ def call_ffmpeg(in_filename):
 def cli(initial_path, delete, input_ext):
     p = Path(initial_path)
     if p.is_dir():
-        for file_ in p.glob("**/*.{}".format(input_ext)):
-            compress_file(file_, delete)
+        files = p.glob("**/*.{}".format(input_ext))
     else:
-        compress_file(p, delete)
+        files = [p]
+
+    for file_ in files:
+        compress_file(file_, delete)
 
 
 if __name__ == "__main__":
