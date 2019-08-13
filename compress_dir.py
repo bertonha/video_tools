@@ -17,9 +17,8 @@ def compress_file(in_filename):
     subprocess.run(
         [
             "ffmpeg",
-            "-i", str(in_filename),
-            "-c:v", "libx265",
-            "-crf", "28",
+            "-i", in_filename,
+            "-c:v", "libx265", "-crf", "28",
             "-c:a", "aac", "-b:a", "128k",
             out_filename,
         ],
