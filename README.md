@@ -11,10 +11,10 @@ python setup.py install
 
 ## Execute
 ```
-compress_dir <path of videos>
+video_compress <path of videos>
 ```
 
 If you want to delete the original
 ```
-compress_dir --delete <path of videos>
+video_compress --delete <path of videos>
 ```
