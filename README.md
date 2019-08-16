@@ -1,8 +1,9 @@
 # Video Compressor
 
-Converts MP4 videos to H265 MP4 with 28 fixed frames
+Converts MP4 videos to H.265 with 28 fixed frames per second
 
-It deprends of ffmpeg on your path
+This app deprends of ffmpeg on your path to proper execute.
+It's possible to compress a single video or all videos recursivile from a folder
 
 ## Install
 ```
@@ -14,7 +15,7 @@ python setup.py install
 video_compress <path of videos>
 ```
 
-If you want to delete the original
+If you want to delete the original video after the compression
 ```
 video_compress --delete <path of videos>
 ```
