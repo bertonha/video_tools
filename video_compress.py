@@ -49,7 +49,10 @@ def cli(initial_path, delete, input_ext):
         files = [p]
 
     for file_ in files:
-        compress_file(file_, delete)
+        try:
+            compress_file(file_, delete)
+        except Exception:
+            continue
 
 
 if __name__ == "__main__":
