@@ -21,6 +21,20 @@ video_tools compress --delete <path of videos>
 ```
 
 ## Cleanup
+Remove Windows and macOS meta files
+
 ```
-video_tools cleanup <path of videos>
+video_tools cleanup <PATH>
+```
+
+## Counter
+Show total of files per extension
+
+Has the option to show the files with `--verbose`
+```
+video_tools count <PATH>
+```
+
+```
+video_tools count <PATH> .mp4 .mov
 ```
