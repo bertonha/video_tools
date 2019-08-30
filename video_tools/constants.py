@@ -6,6 +6,7 @@ SUPPORTED_EXTENSIONS = [
     "mpg",
     "mov",
     "m4v",
+    "mts",
 ]
 
 IGNORED_PATTERNS = [
