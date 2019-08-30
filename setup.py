@@ -1,15 +1,16 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
 
 setup(
-    name='Video Compressor',
+    name='Video Tools',
     version='0.1',
-    py_modules=['video_compress'],
+    packages=find_packages(),
+    include_package_data=True,
     install_requires=[
         "Click",
-        "pathlib",
     ],
     entry_points='''
         [console_scripts]
-        video_compress=video_compress:cli
+        video_tools=video_tools.__main__:cli
     ''',
 )
