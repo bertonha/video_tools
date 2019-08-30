@@ -7,20 +7,20 @@ from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
 
 def is_video_file(file_):
     for extension in SUPPORTED_EXTENSIONS:
-        if file_.name.endswith(extension):
+        if file_.match(f"*.{extension}"):
             return True
     return False
 
 
 def is_meta_file(file_):
     for pattern in IGNORED_PATTERNS:
-        if file_.name.startswith(pattern):
+        if file_.match(pattern):
             return True
     return False
 
 
 def is_processed_file(file_):
-    return file_.name.endswith(OUTPUT_SUFFIX)
+    return file_.match(f"*{OUTPUT_SUFFIX}")
 
 
 def filter_compressable_files(files):

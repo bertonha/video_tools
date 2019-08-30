@@ -23,7 +23,7 @@ def compress(initial_path, delete):
     p = Path(initial_path)
 
     if p.is_dir():
-        files = list(filter_compressable_files(p.glob("**/*")))
+        files = list(filter_compressable_files(p.glob("**/*.*")))
     else:
         files = [p]
 
@@ -40,5 +40,5 @@ def compress(initial_path, delete):
             call_ffmpeg(in_file, out_file)
         except Exception:
             continue
-        if delete:
+        if delete and out_file.exists():
             delete_file(in_file)
