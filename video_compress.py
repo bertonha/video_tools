@@ -7,6 +7,12 @@ from pathlib import Path
 
 OUTPUT_SUFFIX = "_compressed.mp4"
 
+EXTENSION_LIST = [
+    "mp4",
+    "wmv",
+    "mpg",
+]
+
 
 def is_meta_file(filename):
     return filename.startswith("._")
@@ -18,7 +24,10 @@ def compress_file(file_, delete):
         return
     elif is_meta_file(file_.name):
         return
-    call_ffmpeg(in_filename)
+    try:
+        call_ffmpeg(in_filename)
+    except Exception:
+        return
     if delete:
         os.remove(in_filename)
 
@@ -39,20 +48,15 @@ def call_ffmpeg(in_filename):
 
 @click.command()
 @click.option("--delete", default=False, is_flag=True)
-@click.option("--input_ext", default="MP4")
 @click.argument("initial_path")
-def cli(initial_path, delete, input_ext):
+def cli(initial_path, delete):
     p = Path(initial_path)
     if p.is_dir():
-        files = p.glob("**/*.{}".format(input_ext))
+        for extension in EXTENSION_LIST:
+            for file_ in p.glob("**/*.{}".format(extension)):
+                compress_file(file_, delete)
     else:
-        files = [p]
-
-    for file_ in files:
-        try:
-            compress_file(file_, delete)
-        except Exception:
-            continue
+        compress_file(p, delete)
 
 
 if __name__ == "__main__":
