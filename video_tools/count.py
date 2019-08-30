@@ -13,7 +13,11 @@ def count_group():
 @count_group.command()
 @click.argument("initial_path")
 @click.argument("extension")
-def count(initial_path, extension):
+@click.option("--verbose", default=False, is_flag=True)
+def count(initial_path, extension, verbose):
     p = Path(initial_path)
-    total = len(list(p.glob(f"**/*.{extension}")))
-    print_style(f"Total {extension} files: {total}")
+    files = list(p.glob(f"**/*.{extension}"))
+    print_style(f"Total {extension} files: {len(files)}")
+    if verbose:
+        for file_ in files:
+            print_style(str(file_), fg="blue")
