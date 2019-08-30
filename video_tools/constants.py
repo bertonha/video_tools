@@ -1,6 +1,6 @@
 OUTPUT_SUFFIX = "_compressed.mp4"
 
-EXTENSIONS = [
+SUPPORTED_EXTENSIONS = [
     "mp4",
     "wmv",
     "mpg",

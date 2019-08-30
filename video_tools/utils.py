@@ -1,7 +1,14 @@
 import os
 import subprocess
 
-from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX
+from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
+
+
+def is_video_file(file_):
+    for pattern in SUPPORTED_EXTENSIONS:
+        if file_.name.endswith(pattern):
+            return True
+    return False
 
 
 def is_meta_file(file_):
