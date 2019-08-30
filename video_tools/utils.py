@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+import click
+
 from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
 
 
@@ -38,4 +40,6 @@ def call_ffmpeg(file_):
 
 
 def delete_file(file_):
-    os.remove(str(file_))
+    filename = str(file_)
+    click.echo(click.style('Deleting: {}'.format(filename), fg='red'))
+    os.remove(filename)
