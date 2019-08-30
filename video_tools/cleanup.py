@@ -11,7 +11,7 @@ def cleanup_group():
 
 
 @cleanup_group.command()
-@click.argument("initial_path")
+@click.argument("initial_path", type=click.Path(exists=True))
 def cleanup(initial_path):
     p = Path(initial_path)
     for file_ in p.glob("**/*"):

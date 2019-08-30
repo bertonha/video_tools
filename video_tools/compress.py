@@ -17,8 +17,8 @@ def compress_group():
 
 
 @compress_group.command()
-@click.option("--delete", default=False, is_flag=True)
-@click.argument("initial_path")
+@click.option("-d", "--delete", default=False, is_flag=True)
+@click.argument("initial_path", type=click.Path(exists=True))
 def compress(initial_path, delete):
     p = Path(initial_path)
 
