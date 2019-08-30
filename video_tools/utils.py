@@ -1,4 +1,3 @@
-import os
 import subprocess
 
 import click
@@ -26,7 +25,7 @@ def is_processed_file(file_):
 
 def call_ffmpeg(file_):
     in_filename = str(file_)
-    out_filename = "{}{}".format(in_filename[:-4], OUTPUT_SUFFIX)
+    out_filename = f"{in_filename[:-4]}{OUTPUT_SUFFIX}"
     subprocess.run(
         [
             "ffmpeg",
@@ -40,6 +39,5 @@ def call_ffmpeg(file_):
 
 
 def delete_file(file_):
-    filename = str(file_)
-    click.echo(click.style('Deleting: {}'.format(filename), fg='red'))
-    os.remove(filename)
+    click.echo(click.style(f'Deleting: {file_}', fg='red'))
+    file_.unlink()
