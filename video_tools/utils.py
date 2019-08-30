@@ -6,8 +6,8 @@ from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
 
 
 def is_video_file(file_):
-    for pattern in SUPPORTED_EXTENSIONS:
-        if file_.name.endswith(pattern):
+    for extension in SUPPORTED_EXTENSIONS:
+        if file_.name.endswith(extension):
             return True
     return False
 
@@ -23,21 +23,38 @@ def is_processed_file(file_):
     return file_.name.endswith(OUTPUT_SUFFIX)
 
 
-def call_ffmpeg(file_):
-    in_filename = str(file_)
-    out_filename = f"{in_filename[:-4]}{OUTPUT_SUFFIX}"
+def filter_compressable_files(files):
+    for file_ in files:
+        if (
+            is_video_file(file_)
+            and not is_processed_file(file_)
+            and not is_meta_file(file_)
+        ):
+            yield file_
+
+
+def generate_output_file(in_file):
+    return in_file.with_name(in_file.stem + OUTPUT_SUFFIX)
+
+
+def call_ffmpeg(in_file, out_file):
     subprocess.run(
         [
             "ffmpeg",
-            "-i", in_filename,
+            "-i", str(in_file),
             "-c:v", "libx265", "-crf", "28",
             "-c:a", "aac", "-b:a", "128k",
-            out_filename,
+            str(out_file),
         ],
         check=True,
     )
 
 
 def delete_file(file_):
-    click.echo(click.style(f'Deleting: {file_}', fg='red'))
+    print_style(f'Deleting: {file_}', fg='red')
     file_.unlink()
+
+
+def print_style(msg, **kwargs):
+    kwargs.setdefault("fg", "green")
+    click.echo(click.style(msg, **kwargs))

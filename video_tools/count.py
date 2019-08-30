@@ -2,6 +2,8 @@ from pathlib import Path
 
 import click
 
+from .utils import print_style
+
 
 @click.group()
 def count_group():
@@ -14,4 +16,4 @@ def count_group():
 def count(initial_path, extension):
     p = Path(initial_path)
     total = len(list(p.glob(f"**/*.{extension}")))
-    click.echo(click.style(f"Total {extension} files: {total}"))
+    print_style(f"Total {extension} files: {total}")
