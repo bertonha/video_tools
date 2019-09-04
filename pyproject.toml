@@ -1,0 +1,8 @@
+[tool.black]
+line-length = 80
+exclude = '''
+/(
+    \.eggs
+  | \.git
+)/
+'''

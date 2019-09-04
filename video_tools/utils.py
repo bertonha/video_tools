@@ -23,7 +23,7 @@ def is_processed_file(file_):
     return file_.match(f"*{OUTPUT_SUFFIX}")
 
 
-def filter_compressable_files(files):
+def filter_compressible_files(files):
     for file_ in files:
         if (
             is_video_file(file_)

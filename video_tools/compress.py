@@ -5,7 +5,7 @@ import click
 from .utils import (
     call_ffmpeg,
     delete_file,
-    filter_compressable_files,
+    filter_compressible_files,
     generate_output_file,
     print_style,
 )
@@ -23,7 +23,7 @@ def compress(initial_path, delete):
     p = Path(initial_path)
 
     if p.is_dir():
-        files = list(filter_compressable_files(p.glob("**/*.*")))
+        files = list(filter_compressible_files(p.glob("**/*.*")))
     else:
         files = [p]
 
