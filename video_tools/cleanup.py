@@ -2,7 +2,7 @@ from pathlib import Path
 
 import click
 
-from .utils import is_meta_file, delete_file
+from .utils import delete_file, is_meta_file
 
 
 @click.group()

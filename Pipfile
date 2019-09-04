@@ -5,11 +5,17 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
+isort = "*"
+black = "*"
+flake8 = "*"
 
 [packages]
 click = "*"
-colorama = {version = "*", sys_platform = "== 'win32'"}
-video-tools = {editable = true, path = "."}
+colorama = {version = "*",sys_platform = "== 'win32'"}
+video-tools = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

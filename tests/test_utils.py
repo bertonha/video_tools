@@ -1,13 +1,12 @@
 from pathlib import Path
 
 import pytest
-
 from video_tools.utils import (
+    filter_compressible_files,
     generate_output_file,
+    is_meta_file,
     is_processed_file,
     is_video_file,
-    filter_compressible_files,
-    is_meta_file,
 )
 
 

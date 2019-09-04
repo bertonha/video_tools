@@ -1,4 +1,8 @@
 repos:
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: v4.3.21
+    hooks:
+    - id: isort
 -   repo: https://github.com/ambv/black
     rev: 19.3b0
     hooks:
@@ -9,10 +13,3 @@ repos:
     - id: end-of-file-fixer
     - id: trailing-whitespace
     - id: flake8
--   repo: local
-    hooks:
-    -   id: tests
-        name: run tests
-        entry: pipenv run pytest -v
-        language: system
-        types: [python]
