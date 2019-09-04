@@ -38,6 +38,7 @@ def generate_output_file(in_file):
 
 
 def call_ffmpeg(in_file, out_file):
+    # fmt: off
     subprocess.run(
         [
             "ffmpeg",
@@ -48,10 +49,11 @@ def call_ffmpeg(in_file, out_file):
         ],
         check=True,
     )
+    # fmt: on
 
 
 def delete_file(file_):
-    print_style(f'Deleting: {file_}', fg='red')
+    print_style(f"Deleting: {file_}", fg="red")
     file_.unlink()
 
 

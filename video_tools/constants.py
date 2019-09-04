@@ -1,5 +1,6 @@
 OUTPUT_SUFFIX = "_compressed.mp4"
 
+# fmt: off
 SUPPORTED_EXTENSIONS = [
     "mp4",
     "wmv",
@@ -15,3 +16,4 @@ IGNORED_PATTERNS = [
     "desktop.ini",
     "Thumbs.db",
 ]
+# fmt: on
