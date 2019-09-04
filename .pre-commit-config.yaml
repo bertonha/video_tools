@@ -9,3 +9,10 @@ repos:
     - id: end-of-file-fixer
     - id: trailing-whitespace
     - id: flake8
+-   repo: local
+    hooks:
+    -   id: tests
+        name: run tests
+        entry: pipenv run pytest -v
+        language: system
+        types: [python]

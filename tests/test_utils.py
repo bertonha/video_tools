@@ -26,7 +26,13 @@ def test_generate_output_file(input_name, output_name):
 
 
 @pytest.mark.parametrize(
-    "input_name, expected", [("a.mp4", False), ("a_compressed.mp4", True)]
+    "input_name, expected",
+    [
+        ("a.mp4", False),
+        ("a_compressed.mp4", True),
+        ("c:/someFolder/asd.wmv", False),
+        ("c:/someFolder/asd_compressed.mp4", True),
+    ],
 )
 def test_is_processed_file(input_name, expected):
     file_ = Path(input_name)

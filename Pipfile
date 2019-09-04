@@ -9,6 +9,7 @@ pytest = "*"
 [packages]
 click = "*"
 colorama = {version = "*", sys_platform = "== 'win32'"}
+video-tools = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"
