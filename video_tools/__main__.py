@@ -6,6 +6,7 @@ from .count import count_group
 
 sources = [cleanup_group, compress_group, count_group]
 
+cli = click.CommandCollection(sources=sources)
+
 if __name__ == "__main__":
-    cli = click.CommandCollection(sources=sources)
     cli()
