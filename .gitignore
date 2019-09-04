@@ -1,6 +1,9 @@
 *.py[co]
 .venv/
+venv/
 .vscode/
 build/
 dist/
+.pytest_cache/
+.eggs/
 *.egg-info
