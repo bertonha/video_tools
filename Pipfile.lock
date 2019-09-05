@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4119668ae00dec02cf26627a7e2e935dd3d4997a360ea6a175361e4e75f9c936"
+            "sha256": "a12aefcfcd74e0a05fc7308144f233d83814f877234b832592cf7ca64e6edf00"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,10 +32,6 @@
             "index": "pypi",
             "markers": "sys_platform == 'win32'",
             "version": "==0.4.1"
-        },
-        "video-tools": {
-            "editable": true,
-            "path": "."
         }
     },
     "develop": {
