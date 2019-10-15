@@ -25,11 +25,7 @@ def is_processed_file(file_):
 
 def filter_compressible_files(files):
     for file_ in files:
-        if (
-            is_video_file(file_)
-            and not is_processed_file(file_)
-            and not is_meta_file(file_)
-        ):
+        if is_video_file(file_) and not is_processed_file(file_) and not is_meta_file(file_):
             yield file_
 
 

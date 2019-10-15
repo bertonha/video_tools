@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+
 from video_tools.utils import (
     filter_compressible_files,
     generate_output_file,
@@ -13,15 +14,14 @@ from video_tools.utils import (
 @pytest.mark.parametrize(
     "input_name, output_name",
     [
-        ("a.mp4", "a_compressed.mp4"),
-        ("/tmp/asd.mov", "/tmp/asd_compressed.mp4"),
-        ("c:/someFolder/asd.wmv", "c:/someFolder/asd_compressed.mp4"),
+        (Path("a.mp4"), Path("a_compressed.mp4")),
+        (Path("/tmp/asd.mov"), Path("/tmp/asd_compressed.mp4")),
+        (Path("c:\\someFolder\\asd.wmv"), Path("c:\\someFolder\\asd_compressed.mp4")),
     ],
 )
 def test_generate_output_file(input_name, output_name):
-    file_ = Path(input_name)
-    output_file = generate_output_file(file_)
-    assert str(output_file) == output_name
+    output_file = generate_output_file(input_name)
+    assert output_file == output_name
 
 
 @pytest.mark.parametrize(
