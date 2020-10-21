@@ -18,7 +18,7 @@ def count_group():
 def count(initial_path, extensions, verbose):
     p = Path(initial_path)
     counter = Counter()
-    for file_ in p.glob(f"**/*.*"):
+    for file_ in p.glob("**/*.*"):
         counter[file_.suffix.lower()] += 1
 
     if not extensions:
