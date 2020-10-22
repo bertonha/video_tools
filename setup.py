@@ -7,5 +7,5 @@ setup(
     install_requires=["Click", 'colorama;sys_platform=="win32"'],
     classifiers=["Programming Language :: Python :: 3"],
     license="MIT",
-    entry_points={"console_scripts": ["video_tools=video_tools.__main__:cli"]},
+    entry_points={"console_scripts": ["video_tools=video_tools.cli:cli"]},
 )

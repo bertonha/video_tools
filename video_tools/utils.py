@@ -34,18 +34,11 @@ def generate_output_file(in_file):
 
 
 def call_ffmpeg(in_file, out_file):
-    # fmt: off
+    command = f"ffmpeg -i {in_file} -c:v libx265 -crf 28 -c:a aac -b:a 128k {out_file}"
     subprocess.run(
-        [
-            "ffmpeg",
-            "-i", str(in_file),
-            "-c:v", "libx265", "-crf", "28",
-            "-c:a", "aac", "-b:a", "128k",
-            str(out_file),
-        ],
+        command.split(),
         check=True,
     )
-    # fmt: on
 
 
 def delete_file(file_):
