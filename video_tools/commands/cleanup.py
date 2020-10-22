@@ -2,7 +2,7 @@ from pathlib import Path
 
 import click
 
-from video_tools.utils import delete_file, is_meta_file
+from ..utils import delete_file, is_meta_file
 
 
 @click.group()

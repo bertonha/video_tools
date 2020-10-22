@@ -2,7 +2,7 @@ from pathlib import Path
 
 import click
 
-from video_tools.utils import (
+from ..utils import (
     call_ffmpeg,
     delete_file,
     filter_compressible_files,
