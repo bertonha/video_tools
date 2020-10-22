@@ -4,7 +4,7 @@ import pytest
 
 from video_tools.utils import (
     filter_compressible_files,
-    generate_output_file,
+    generate_output_filename,
     is_meta_file,
     is_processed_file,
     is_video_file,
@@ -20,7 +20,7 @@ from video_tools.utils import (
     ],
 )
 def test_generate_output_file(input_name, output_name):
-    output_file = generate_output_file(input_name)
+    output_file = generate_output_filename(input_name)
     assert output_file == output_name
 
 

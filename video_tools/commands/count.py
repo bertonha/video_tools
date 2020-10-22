@@ -3,7 +3,7 @@ from pathlib import Path
 
 import click
 
-from ..utils import print_style
+from video_tools.utils import print_style
 
 
 @click.group()

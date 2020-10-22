@@ -2,7 +2,7 @@ import subprocess
 
 import click
 
-from .constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
+from video_tools.constants import IGNORED_PATTERNS, OUTPUT_SUFFIX, SUPPORTED_EXTENSIONS
 
 
 def is_video_file(file_):
@@ -29,16 +29,20 @@ def filter_compressible_files(files):
             yield file_
 
 
-def generate_output_file(in_file):
+def generate_output_filename(in_file):
     return in_file.with_name(in_file.stem + OUTPUT_SUFFIX)
 
 
-def call_ffmpeg(in_file, out_file):
-    command = f"ffmpeg -i {in_file} -c:v libx265 -crf 28 -c:a aac -b:a 128k {out_file}"
-    subprocess.run(
-        command.split(),
-        check=True,
+def call_ffmpeg(in_file, out_file, rotate):
+    rotate_command = "-vf transpose=2,transpose=2" if rotate else ""
+    command = (
+        f"ffmpeg -i {in_file}"
+        f" {rotate_command}"
+        f" -c:v libx265 -crf 28"
+        f" -c:a aac -b:a 128k"
+        f" {out_file}"
     )
+    subprocess.run(command, check=True)
 
 
 def delete_file(file_):

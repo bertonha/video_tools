@@ -12,6 +12,10 @@ python setup.py install
 ```
 
 ## Compress
+flags:
+- -r, --rotate Rotate image 180 degrees
+- -d, --delete Delete original file after conversion
+
 ```
 video_tools compress <path of videos>
 ```

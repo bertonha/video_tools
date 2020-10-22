@@ -1,6 +1,6 @@
 import click
 
-from .commands import sources
+from video_tools.commands import sources
 
 cli = click.CommandCollection(sources=sources)
 
