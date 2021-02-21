@@ -19,8 +19,9 @@ def compress_group():
 @compress_group.command()
 @click.option("-r", "--rotate", default=False, is_flag=True)
 @click.option("-d", "--delete", default=False, is_flag=True)
+@click.option("--resolution", default=None)
 @click.argument("initial_path", type=click.Path(exists=True))
-def compress(initial_path, delete, rotate):
+def compress(initial_path, delete, rotate, resolution):
     p = Path(initial_path)
 
     if p.is_dir():
@@ -38,7 +39,7 @@ def compress(initial_path, delete, rotate):
         print_style(f"Output file: {out_file}")
 
         try:
-            call_ffmpeg(in_file, out_file, rotate)
+            call_ffmpeg(in_file, out_file, rotate, resolution)
         except Exception:
             continue
         else:

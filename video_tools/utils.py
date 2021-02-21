@@ -33,11 +33,13 @@ def generate_output_filename(in_file):
     return in_file.with_name(in_file.stem + OUTPUT_SUFFIX)
 
 
-def call_ffmpeg(in_file, out_file, rotate):
+def call_ffmpeg(in_file, out_file, rotate, resolution):
     rotate_command = "-vf transpose=2,transpose=2" if rotate else ""
+    resolution_command = f"-vf scale={resolution}" if resolution else ""
     command = (
         f"ffmpeg -i {in_file}"
         f" {rotate_command}"
+        f" {resolution_command}"
         f" -c:v libx265 -crf 28"
         f" -c:a aac -b:a 128k"
         f" {out_file}"
