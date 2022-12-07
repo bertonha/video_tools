@@ -8,7 +8,7 @@ It's possible to compress a single video or all videos recursively from a folder
 
 ## Install
 ```
-python setup.py install
+poetry install --without dev
 ```
 
 ## Compress
